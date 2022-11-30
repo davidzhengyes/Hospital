@@ -1,6 +1,4 @@
-//int x = 50;
-//int y = 100;
-
+//Global Variables
 ArrayList<Doctor> allDoctors = new ArrayList<Doctor>();
 ArrayList<Patient> allPatients = new ArrayList<Patient>();
 
@@ -13,15 +11,8 @@ void setup(){
 
 
 void draw(){
-  //addDr();
-  
   for(int i = 0; i < allDoctors.size(); i++){
     allDoctors.get(i).drawDr();
   }
- // x += 15;
   
-}
-
-void addDr(){
-  allDoctors.add(new Doctor(5, 5));
 }
