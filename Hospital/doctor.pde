@@ -3,12 +3,16 @@ class Doctor {
  float doctorSkill;
  float doctorSpeed;
  color doctorColor;
+ int xPos;
+ int yPos;
  
  //constructor
- Doctor(float dsk, float dsp){
-   this.doctorSkill = dsk;
-   this.doctorSpeed = dsp;
+ Doctor(int x, int y){
+   this.doctorSkill = 1;
+   this.doctorSpeed = 1;
    this.doctorColor = color(0, 0, 255);
+   this.xPos = x;
+   this.yPos = y;
  }
  
  
@@ -19,7 +23,8 @@ class Doctor {
  
  void drawDr(){
    fill(doctorColor);
-   circle(x, y, 15);
+   circle(this.xPos, this.yPos, 15);
+   noStroke();
  }
  
  

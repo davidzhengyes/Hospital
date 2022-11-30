@@ -1,5 +1,5 @@
-int x = 50;
-int y = 100;
+//int x = 50;
+//int y = 100;
 
 ArrayList<Doctor> allDoctors = new ArrayList<Doctor>();
 ArrayList<Patient> allPatients = new ArrayList<Patient>();
@@ -13,12 +13,12 @@ void setup(){
 
 
 void draw(){
-  addDr();
+  //addDr();
   
   for(int i = 0; i < allDoctors.size(); i++){
-    allDoctors.get(0).drawDr();
+    allDoctors.get(i).drawDr();
   }
-  x += 15;
+ // x += 15;
   
 }
 

@@ -20,7 +20,7 @@ class Building{
   
   void drawBuilding(){
     for (int i=0; i<this.numRooms; i++){
-     
+      
       Room currRoom = new Room();
       currRoom.yPos = i/2*yWidth;
       rooms.add(currRoom);
@@ -32,6 +32,8 @@ class Building{
       }
       rect(currRoom.xPos, currRoom.yPos, this.xWidth, this.yWidth);
       println(currRoom.xPos, currRoom.yPos, this.xWidth,this.yWidth);
+      
+      allDoctors.add(new Doctor((currRoom.xPos+this.xWidth)-(this.xWidth/2), (currRoom.yPos+this.yWidth)-(this.yWidth/2)));
     }
   }
   
