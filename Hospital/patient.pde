@@ -3,7 +3,7 @@ class Patient {
   int treatmentTime;
   
   float injurySeverity;
-  color PatientColor;
+  color patientColor;
   
   boolean isDead;
   boolean isHealthy;
@@ -13,16 +13,27 @@ class Patient {
   float patientY;
   
    //constructor
-  Patient(int tSE, int tT, float iS, boolean iD, boolean iH, boolean ss, float pX, float pY, color PC) {
-    this.timeSinceEntered = tSE;
+  Patient(int tSE, int tT, float iS, boolean iD, boolean iH, boolean ss, float pX, float pY) {
+    this.timeSinceEntered = tSE;  
     this.treatmentTime = tT;
-    this.injurySeverity = iS;
+    this.injurySeverity = iS; //please limit between 0 & 100
     this.isDead = iD;   
     this.isHealthy = iH;
     this.isSeated = ss;
-    this.PatientColor = PC;
     this.patientX = pX;
     this.patientY = pY;
+    
+    if (injurySeverity<=50){
+      this.patientColor = color(injurySeverity/50.0*255,255,0);
+    }
+    else{
+      this.patientColor = color(255, (100-injurySeverity)/50.0*255,0);
+    }
+  }
+  
+  void drawPa(){
+    fill(patientColor);
+    circle(patientX,patientY,5);
   }
 
 }
