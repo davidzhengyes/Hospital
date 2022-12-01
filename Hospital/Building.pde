@@ -7,14 +7,21 @@ class Building{
   
   int doorOffset;
   
+  int screenWidth;
+  int screenLength;
+  
   ArrayList rooms = new ArrayList <Room>();
   
   
-  Building(int rooms,int p){
+  Building(int rooms,int p,int w, int l){
     this.numRooms = rooms;
     this.pathWidth=p;
-    this.xWidth = (width-pathWidth)/2;
-    this.yWidth = height*2/3/(this.numRooms/2+this.numRooms%2);
+    this.screenWidth = w;
+    this.screenLength = l;
+    
+    this.xWidth = (this.screenWidth-pathWidth)/2;
+    this.yWidth = this.screenLength*2/3/(this.numRooms/2+this.numRooms%2);
+    
   }
   
   
@@ -30,8 +37,9 @@ class Building{
       else{
         currRoom.xPos = width-(width-this.pathWidth)/2;
       }
+      fill(255);
       rect(currRoom.xPos, currRoom.yPos, this.xWidth, this.yWidth);
-      println(currRoom.xPos, currRoom.yPos, this.xWidth,this.yWidth);
+     
       
       allDoctors.add(new Doctor((currRoom.xPos+this.xWidth)-(this.xWidth/2), (currRoom.yPos+this.yWidth)-(this.yWidth/2)));
     }
