@@ -62,10 +62,14 @@ public void createGUI(){
   label2.setText("Doctor Speed");
   label2.setOpaque(false);
   num_Doctor = new GCustomSlider(window1, 207, 1, 100, 40, "grey_blue");
-  num_Doctor.setLimits(0.5, 0.0, 1.0);
+  num_Doctor.setLimits(1.0, 1.0, 20.0);
   num_Doctor.setNumberFormat(G4P.DECIMAL, 2);
   num_Doctor.setOpaque(false);
   num_Doctor.addEventHandler(this, "num_Doctor_Slider");
+  label3 = new GLabel(window1, 206, 0, 80, 20);
+  label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label3.setText("Num Doctor");
+  label3.setOpaque(false);
   window1.loop();
 }
 
@@ -77,3 +81,4 @@ GLabel label1;
 GCustomSlider doctor_Speed; 
 GLabel label2; 
 GCustomSlider num_Doctor; 
+GLabel label3; 

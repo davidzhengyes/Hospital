@@ -1,7 +1,7 @@
 //Global Variables
 ArrayList<Doctor> allDoctors = new ArrayList<Doctor>();
 ArrayList<Patient> allPatients = new ArrayList<Patient>();
-
+import g4p_controls.*;
 PImage img;
 
 
@@ -15,6 +15,7 @@ void setup(){
   
   Patient ss = new Patient (0,0,89, false,false,false,300,800);
   allPatients.add(ss);
+  createGUI();
 
 }
 
