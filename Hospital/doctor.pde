@@ -6,6 +6,8 @@ class Doctor {
  int xPos;
  int yPos;
  
+ Patient currentPatient;
+ 
  //constructor
  Doctor(int x, int y){
    this.doctorSkill = 1;
@@ -13,6 +15,7 @@ class Doctor {
    this.doctorColor = color(0, 0, 255);
    this.xPos = x;
    this.yPos = y;
+   this.currentPatient = null;
  }
  
  

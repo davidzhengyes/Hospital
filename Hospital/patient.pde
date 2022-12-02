@@ -12,6 +12,8 @@ class Patient {
   float patientX;
   float patientY;
   
+  Doctor currentDoctor;
+  
    //constructor
   Patient(int tSE, int tT, float iS, boolean iD, boolean iH, boolean ss, float pX, float pY) {
     this.timeSinceEntered = tSE;  
@@ -22,6 +24,8 @@ class Patient {
     this.isSeated = ss;
     this.patientX = pX;
     this.patientY = pY;
+    
+    this.currentDoctor = null;
     
     if (injurySeverity<=50){
       this.patientColor = color(injurySeverity/50.0*255,255,0);

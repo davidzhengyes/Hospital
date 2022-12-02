@@ -12,11 +12,11 @@ class Building{
   
   int doorWidth;
   
-  ArrayList rooms = new ArrayList <Room>();
+  ArrayList <Room> rooms = new ArrayList <Room>();
   
   
-  Building(int rooms,int p,int w, int l, int dw){
-    this.numRooms = rooms;
+  Building(int r,int p,int w, int l, int dw){
+    this.numRooms = r;
     this.pathWidth=p;
     this.screenWidth = w;
     this.screenLength = l;
@@ -27,22 +27,37 @@ class Building{
     
   }
   
+  void createBuilding(){
+    for (int i=0; i<this.numRooms; i++){
+      Room currRoom = new Room();
+      currRoom.yPos = i/2*yWidth;
+      rooms.add(currRoom);
+      
+      if (i%2==0){
+        currRoom.xPos = 0;
+      }
+      else{
+        currRoom.xPos = width-(width-this.pathWidth)/2;
+      }
+      
+      allDoctors.add(new Doctor((currRoom.xPos+this.xWidth)-(this.xWidth/2), (currRoom.yPos+this.yWidth)-(this.yWidth/2)));
+    }
+  }
+  
   
   void drawBuilding(){
     for (int i=0; i<this.numRooms; i++){
+      Room currRoom = rooms.get(i);
       
-      Room currRoom = new Room();
-      currRoom.yPos = i/2*yWidth;
+      
       stroke(0);
-      rooms.add(currRoom);
+      
       if (i%2==0){
-        currRoom.xPos=0;
         
         line(currRoom.xPos+this.xWidth+1, currRoom.yPos,currRoom.xPos+this.xWidth+1,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0);
         line(currRoom.xPos+this.xWidth+1, currRoom.yPos+(this.yWidth-this.doorWidth)/2.0 + this.doorWidth,currRoom.xPos+this.xWidth+1,currRoom.yPos+this.yWidth);
       }
       else{
-        currRoom.xPos = width-(width-this.pathWidth)/2;
         line(currRoom.xPos-1,currRoom.yPos,currRoom.xPos-1,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0);
         line(currRoom.xPos-1,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0+this.doorWidth,currRoom.xPos-1,currRoom.yPos+this.yWidth);
       }
@@ -57,7 +72,7 @@ class Building{
       
     
       
-      allDoctors.add(new Doctor((currRoom.xPos+this.xWidth)-(this.xWidth/2), (currRoom.yPos+this.yWidth)-(this.yWidth/2)));
+      
     }
   }
   
