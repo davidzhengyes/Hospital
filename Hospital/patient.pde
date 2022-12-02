@@ -33,7 +33,7 @@ class Patient {
   
   void drawPa(){
     fill(patientColor);
-    circle(patientX,patientY,5);
+    circle(patientX,patientY,15);
   }
 
 }
