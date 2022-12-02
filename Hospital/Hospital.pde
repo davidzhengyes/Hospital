@@ -13,7 +13,7 @@ void setup(){
   
  
   
-  Patient ss = new Patient (0,0,0, false,false,false,300,700);
+  Patient ss = new Patient (0,0,99, false,false,false,300,700);
   allPatients.add(ss);
   
   createGUI();
@@ -23,6 +23,7 @@ void setup(){
 
 
 void draw(){
+  
   if (frameCount%20==0){
     Patient newPatient = new Patient (0,0,int(random(1,100)), false,false,false,300,800);
     allPatients.add(newPatient);
@@ -45,10 +46,17 @@ void draw(){
       //print(allDoctors.get(i).currentPatient.patientX);
       }
     }
+    
+    else{
+      if (allDoctors.get(i).currentPatient.reachedDoctor){
+        allDoctors.get(i).healPatient();
+      }
+    }
   }
   
   
   for (int i=0; i<allPatients.size(); i++){
+    allPatients.get(i).updateColor();
     //need if here, if patient is not already healed
     allPatients.get(i).drawPa();
     

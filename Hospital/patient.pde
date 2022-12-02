@@ -28,6 +28,10 @@ class Patient {
     this.reachedDoctor = false;
     this.currentDoctor = null;
     
+    updateColor();
+  }
+  
+  void updateColor(){
     if (injurySeverity<=50){
       this.patientColor = color(injurySeverity/50.0*255,255,0);
     }
