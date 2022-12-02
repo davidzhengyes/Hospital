@@ -6,15 +6,16 @@ PImage img;
 
 
 
-Building building = new Building (20,100,600,800,50);
+Building building = new Building (4,100,600,800,50);
 void setup(){
   //img = loadImage ("yep.jpg");
   size(600,800);
   
  
   
-  Patient ss = new Patient (0,0,89, false,false,false,300,800);
+  Patient ss = new Patient (0,0,0, false,false,false,300,700);
   allPatients.add(ss);
+  
   createGUI();
   building.createBuilding();
 
@@ -26,7 +27,7 @@ void draw(){
     Patient newPatient = new Patient (0,0,int(random(1,100)), false,false,false,300,800);
     allPatients.add(newPatient);
   }
-  
+  //println(allPatients.get(0).currentDoctor);
   background(210);
   building.drawBuilding();
   for(int i = 0; i < allDoctors.size(); i++){ 
@@ -35,11 +36,13 @@ void draw(){
     allDoctors.get(i).drawDr();
     if (allDoctors.get(i).currentPatient == null){
       
+     
       Patient currPat = allPatients.get(int(random(allPatients.size())));
-      currPat.currentDoctor = allDoctors.get(i);
-      allDoctors.get(i).currentPatient = currPat;
+      if (currPat.currentDoctor == null){
+        currPat.currentDoctor = allDoctors.get(i);
+        allDoctors.get(i).currentPatient = currPat;
       //print(allDoctors.get(i).currentPatient.patientX);
-      
+      }
     }
   }
   
