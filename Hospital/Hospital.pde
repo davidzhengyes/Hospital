@@ -30,14 +30,15 @@ void draw(){
   //println(allPatients.get(0).currentDoctor);
   background(210);
   building.drawBuilding();
+  
   for(int i = 0; i < allDoctors.size(); i++){ 
     
     //randomly assigning patients to doctors;
     allDoctors.get(i).drawDr();
-    if (allDoctors.get(i).currentPatient == null){
+    if (allDoctors.get(i).currentPatient == null){ //if room is empty
       
-     
       Patient currPat = allPatients.get(int(random(allPatients.size())));
+      //pick random patient
       if (currPat.currentDoctor == null){
         currPat.currentDoctor = allDoctors.get(i);
         allDoctors.get(i).currentPatient = currPat;
@@ -55,10 +56,26 @@ void draw(){
     
     if (allPatients.get(i).currentDoctor != null){
       
+      if (allPatients.get(i).patientY == allPatients.get(i).currentDoctor.yPos){
+        //if patient same height as doctor
+        
+        if (allPatients.get(i).patientX < allPatients.get(i).currentDoctor.xPos-15){
+          allPatients.get(i).patientX++;
+        }
+        else if (allPatients.get(i).patientX > allPatients.get(i).currentDoctor.xPos+15){
+          allPatients.get(i).patientX--;
+        }
+        
+        
+      }
+      else{
+        //if not at same height keep going up
+        allPatients.get(i).patientY--;
+      }
       
     }
     else{
-      allPatients.get(i).patientY-=1;
+      allPatients.get(i).patientY--;
     }
   }
   
