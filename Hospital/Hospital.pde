@@ -6,7 +6,7 @@ PImage img;
 
 
 
-Building building = new Building (4,100,600,800,50);
+Building building = new Building (20,100,600,800,50);
 void setup(){
   //img = loadImage ("yep.jpg");
   size(600,800);
