@@ -58,11 +58,13 @@ void draw(){
       
       if (allPatients.get(i).patientY == allPatients.get(i).currentDoctor.yPos){
         //if patient same height as doctor
-        
-        if (allPatients.get(i).patientX < allPatients.get(i).currentDoctor.xPos-15){
+        if (abs(allPatients.get(i).patientX - allPatients.get(i).currentDoctor.xPos)==15){
+          allPatients.get(i).reachedDoctor = true;
+        }
+        if (allPatients.get(i).patientX < allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == false){
           allPatients.get(i).patientX++;
         }
-        else if (allPatients.get(i).patientX > allPatients.get(i).currentDoctor.xPos+15){
+        else if (allPatients.get(i).patientX > allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == false){
           allPatients.get(i).patientX--;
         }
         

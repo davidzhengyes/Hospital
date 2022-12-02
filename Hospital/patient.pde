@@ -8,6 +8,7 @@ class Patient {
   boolean isDead;
   boolean isHealthy;
   boolean isSeated;
+  boolean reachedDoctor;
   
   float patientX;
   float patientY;
@@ -24,7 +25,7 @@ class Patient {
     this.isSeated = ss;
     this.patientX = pX;
     this.patientY = pY;
-    
+    this.reachedDoctor = false;
     this.currentDoctor = null;
     
     if (injurySeverity<=50){
