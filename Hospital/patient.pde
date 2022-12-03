@@ -38,6 +38,10 @@ class Patient {
     else{
       this.patientColor = color(255, (100-injurySeverity)/50.0*255,0);
     }
+    if(this.patientColor == color(0, 255, 0)){
+      this.isHealthy = true;
+      //println("is healthy");
+    }
   }
   
   void drawPa(){

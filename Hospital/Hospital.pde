@@ -58,7 +58,7 @@ void draw(){
   
   for (Patient patient:allPatients){
     patient.updateColor();
-    //need if here, if patient is not already healed
+    if(patient.isHealthy == false){//need if here, if patient is not already healed
     patient.drawPa();
     
     patient.timeSinceEntered++;
@@ -88,6 +88,21 @@ void draw(){
     else{
       patient.patientY--;
     }
+  }
+  else if(patient.isHealthy == true){
+    patient.drawPa();
+    if (patient.patientX != building.pathWidth/2 + building.xWidth){
+      if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == true){
+        patient.patientX--;
+      }
+      else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == true){
+        patient.patientX++;
+      }
+    }
+    else{
+     patient.patientY--; 
+    }
+  }
   }
   
   
