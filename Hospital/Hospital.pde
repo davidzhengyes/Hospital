@@ -90,7 +90,17 @@ void draw(){
   }
   else if(patient.isHealthy == true){
     patient.drawPa();
-    patient.patientX++; 
+    if (patient.patientX != building.pathWidth/2 + building.xWidth){
+      if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == true){
+        patient.patientX--;
+      }
+      else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == true){
+        patient.patientX++;
+      }
+    }
+    else{
+     patient.patientY--; 
+    }
   }
   }
   
