@@ -29,6 +29,7 @@ class Building{
   
   void createBuilding(){
     rooms = new ArrayList <Room>();
+    allDoctors = new ArrayList<Doctor>();
     this.xWidth = (this.screenWidth-pathWidth)/2;
     this.yWidth = this.screenLength*2/3/(this.numRooms/2+this.numRooms%2);
     if (this.numRooms!=0){
