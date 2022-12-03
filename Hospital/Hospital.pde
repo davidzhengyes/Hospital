@@ -39,7 +39,7 @@ void draw(){
     //randomly assigning patients to doctors;
     allDoctors.get(i).drawDr();
     if (allDoctors.get(i).currentPatient == null){ //if room is empty
-      println("patientlistsize",allPatients.size());
+      
       Patient currPat = allPatients.get(int(random(allPatients.size())));
       //pick random patient
       if (currPat.currentDoctor == null){
