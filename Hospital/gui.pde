@@ -74,6 +74,7 @@ public void createGUI(){
   doctor_Speed.setShowValue(true);
   doctor_Speed.setShowLimits(true);
   doctor_Speed.setLimits(5, 1, 10);
+  doctor_Speed.setNbrTicks(10);
   doctor_Speed.setStickToTicks(true);
   doctor_Speed.setShowTicks(true);
   doctor_Speed.setNumberFormat(G4P.INTEGER, 0);
@@ -96,6 +97,7 @@ public void createGUI(){
   patient_Influx.setShowValue(true);
   patient_Influx.setShowLimits(true);
   patient_Influx.setLimits(5, 1, 10);
+  patient_Influx.setNbrTicks(10);
   patient_Influx.setStickToTicks(true);
   patient_Influx.setShowTicks(true);
   patient_Influx.setNumberFormat(G4P.INTEGER, 0);
