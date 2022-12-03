@@ -39,7 +39,7 @@ void draw(){
     //randomly assigning patients to doctors;
     allDoctors.get(i).drawDr();
     if (allDoctors.get(i).currentPatient == null){ //if room is empty
-      
+      println("patientlistsize",allPatients.size());
       Patient currPat = allPatients.get(int(random(allPatients.size())));
       //pick random patient
       if (currPat.currentDoctor == null){
@@ -105,4 +105,16 @@ void draw(){
       }
     }
   }
+}
+
+
+
+void reset(){
+  noLoop();
+  allDoctors = new ArrayList<Doctor>();
+  allPatients = new ArrayList<Patient>();
+  building.createBuilding();
+  allPatients.add(new Patient (0,0,99, false,false,false,300,700));
+  loop();
+  print("started loop again");
 }

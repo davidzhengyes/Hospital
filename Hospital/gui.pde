@@ -31,6 +31,7 @@ public void num_Docotor_Changer(GTextField source, GEvent event) { //_CODE_:num_
  
   
   if (int(num_Doctor.getText())!=0){
+    reset();
     building.numRooms = int(num_Doctor.getText());
   }
   building.createBuilding();
