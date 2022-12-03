@@ -30,6 +30,7 @@ void draw(){
   }
   //println(allPatients.get(0).currentDoctor);
   background(210);
+ 
   building.drawBuilding();
   
   for(Doctor doctor:allDoctors){ 

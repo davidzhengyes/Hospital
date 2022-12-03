@@ -21,31 +21,39 @@ class Building{
     this.screenWidth = w;
     this.screenLength = l;
     this.doorWidth=dw;   //please limit doorwidth on GUI to something relative to max rooms :D
-    
     this.xWidth = (this.screenWidth-pathWidth)/2;
     this.yWidth = this.screenLength*2/3/(this.numRooms/2+this.numRooms%2);
+    
     
   }
   
   void createBuilding(){
-    for (int i=0; i<this.numRooms; i++){
-      Room currRoom = new Room();
-      currRoom.yPos = i/2*yWidth;
-      rooms.add(currRoom);
-      
-      if (i%2==0){
-        currRoom.xPos = 0;
+    rooms = new ArrayList <Room>();
+    this.xWidth = (this.screenWidth-pathWidth)/2;
+    this.yWidth = this.screenLength*2/3/(this.numRooms/2+this.numRooms%2);
+    if (this.numRooms!=0){
+      for (int i=0; i<this.numRooms; i++){
+     
+        Room currRoom = new Room();
+        currRoom.yPos = i/2*yWidth;
+        rooms.add(currRoom);
+        
+        if (i%2==0){
+          currRoom.xPos = 0;
+        }
+        else{
+          currRoom.xPos = width-(width-this.pathWidth)/2;
+        }
+        
+        allDoctors.add(new Doctor((currRoom.xPos+this.xWidth)-(this.xWidth/2), (currRoom.yPos+this.yWidth)-(this.yWidth/2)));
       }
-      else{
-        currRoom.xPos = width-(width-this.pathWidth)/2;
-      }
-      
-      allDoctors.add(new Doctor((currRoom.xPos+this.xWidth)-(this.xWidth/2), (currRoom.yPos+this.yWidth)-(this.yWidth/2)));
+    
     }
   }
   
   
   void drawBuilding(){
+    
     for (int i=0; i<this.numRooms; i++){
       Room currRoom = rooms.get(i);
       

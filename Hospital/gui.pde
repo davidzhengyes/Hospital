@@ -27,7 +27,15 @@ public void doctor_Speed_Slider(GCustomSlider source, GEvent event) { //_CODE_:d
 } //_CODE_:doctor_Speed:501818:
 
 public void num_Docotor_Changer(GTextField source, GEvent event) { //_CODE_:num_Doctor:501931:
-  building.numRooms = num_Doctor.getValueI();
+  
+ 
+  
+  if (int(num_Doctor.getText())!=0){
+    building.numRooms = int(num_Doctor.getText());
+  }
+  building.createBuilding();
+  
+  
 } //_CODE_:num_Doctor:501931:
 
 public void patient_Influx_Slider(GCustomSlider source, GEvent event) { //_CODE_:patient_Influx:524675:
