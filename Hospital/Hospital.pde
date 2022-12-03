@@ -32,60 +32,60 @@ void draw(){
   background(210);
   building.drawBuilding();
   
-  for(int i = 0; i < allDoctors.size(); i++){ 
+  for(Doctor doctor:allDoctors){ 
     
     //randomly assigning patients to doctors;
-    allDoctors.get(i).drawDr();
-    if (allDoctors.get(i).currentPatient == null){ //if room is empty
+    doctor.drawDr();
+    if (doctor.currentPatient == null){ //if room is empty
       
       Patient currPat = allPatients.get(int(random(allPatients.size())));
       //pick random patient
       if (currPat.currentDoctor == null){
-        currPat.currentDoctor = allDoctors.get(i);
-        allDoctors.get(i).currentPatient = currPat;
-      //print(allDoctors.get(i).currentPatient.patientX);
+        currPat.currentDoctor = doctor;
+        doctor.currentPatient = currPat;
+      //print(doctor.currentPatient.patientX);
       }
     }
     
     else{
-      if (allDoctors.get(i).currentPatient.reachedDoctor){
-        allDoctors.get(i).healPatient();
+      if (doctor.currentPatient.reachedDoctor){
+        doctor.healPatient();
       }
     }
   }
   
   
-  for (int i=0; i<allPatients.size(); i++){
-    allPatients.get(i).updateColor();
+  for (Patient patient:allPatients){
+    patient.updateColor();
     //need if here, if patient is not already healed
-    allPatients.get(i).drawPa();
+    patient.drawPa();
     
-    allPatients.get(i).timeSinceEntered++;
+    patient.timeSinceEntered++;
     
-    if (allPatients.get(i).currentDoctor != null){
+    if (patient.currentDoctor != null){
       
-      if (allPatients.get(i).patientY == allPatients.get(i).currentDoctor.yPos){
+      if (patient.patientY == patient.currentDoctor.yPos){
         //if patient same height as doctor
-        if (abs(allPatients.get(i).patientX - allPatients.get(i).currentDoctor.xPos)==15){
-          allPatients.get(i).reachedDoctor = true;
+        if (abs(patient.patientX - patient.currentDoctor.xPos)==15){
+          patient.reachedDoctor = true;
         }
-        if (allPatients.get(i).patientX < allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == false){
-          allPatients.get(i).patientX++;
+        if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == false){
+          patient.patientX++;
         }
-        else if (allPatients.get(i).patientX > allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == false){
-          allPatients.get(i).patientX--;
+        else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == false){
+          patient.patientX--;
         }
         
         
       }
       else{
         //if not at same height keep going up
-        allPatients.get(i).patientY--;
+        patient.patientY--;
       }
       
     }
     else{
-      allPatients.get(i).patientY--;
+      patient.patientY--;
     }
   }
   
