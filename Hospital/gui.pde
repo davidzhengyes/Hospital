@@ -60,6 +60,7 @@ public void createGUI(){
   doctor_Skill.setShowValue(true);
   doctor_Skill.setShowLimits(true);
   doctor_Skill.setLimits(5, 1, 10);
+  doctor_Skill.setNbrTicks(10);
   doctor_Skill.setStickToTicks(true);
   doctor_Skill.setShowTicks(true);
   doctor_Skill.setNumberFormat(G4P.INTEGER, 0);
