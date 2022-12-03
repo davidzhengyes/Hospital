@@ -59,50 +59,50 @@ void draw(){
   for (Patient patient:allPatients){
     patient.updateColor();
     if(patient.isHealthy == false){//need if here, if patient is not already healed
-    patient.drawPa();
-    
-    patient.timeSinceEntered++;
-    
-    if (patient.currentDoctor != null){
+      patient.drawPa();
       
-      if (patient.patientY == patient.currentDoctor.yPos){
-        //if patient same height as doctor
-        if (abs(patient.patientX - patient.currentDoctor.xPos)==15){
-          patient.reachedDoctor = true;
-        }
-        if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == false){
-          patient.patientX++;
-        }
-        else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == false){
-          patient.patientX--;
-        }
+      patient.timeSinceEntered++;
+      
+      if (patient.currentDoctor != null){
         
+        if (patient.patientY == patient.currentDoctor.yPos){
+          //if patient same height as doctor
+          if (abs(patient.patientX - patient.currentDoctor.xPos)==15){
+            patient.reachedDoctor = true;
+          }
+          if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == false){
+            patient.patientX++;
+          }
+          else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == false){
+            patient.patientX--;
+          }
+          
+          
+        }
+        else{
+          //if not at same height keep going up
+          patient.patientY--;
+        }
         
       }
       else{
-        //if not at same height keep going up
         patient.patientY--;
       }
-      
     }
-    else{
-      patient.patientY--;
-    }
-  }
-  else if(patient.isHealthy == true){
-    patient.drawPa();
-    if (patient.patientX != building.pathWidth/2 + building.xWidth){
-      if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == true){
-        patient.patientX--;
+    else if(patient.isHealthy == true){
+      patient.drawPa();
+      if (patient.patientX != building.pathWidth/2 + building.xWidth){
+        if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == true){
+          patient.patientX--;
+        }
+        else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == true){
+          patient.patientX++;
+        }
       }
-      else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == true){
-        patient.patientX++;
+      else{
+       patient.patientY--; 
       }
     }
-    else{
-     patient.patientY--; 
-    }
-  }
   }
   
   
