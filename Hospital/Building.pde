@@ -58,7 +58,7 @@ class Building{
     for (int i=0; i<this.numRooms; i++){
       Room currRoom = rooms.get(i);
       
-      
+      strokeWeight(5);
       stroke(0);
       
       if (i%2==0){
@@ -79,7 +79,7 @@ class Building{
       line(currRoom.xPos,currRoom.yPos,currRoom.xPos+this.xWidth,currRoom.yPos);
       line(currRoom.xPos ,currRoom.yPos+this.yWidth , currRoom.xPos+this.xWidth ,currRoom.yPos+yWidth);
       
-    
+      strokeWeight(0);
       
       
     }

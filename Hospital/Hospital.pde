@@ -4,6 +4,8 @@ ArrayList<Patient> allPatients = new ArrayList<Patient>();
 import g4p_controls.*;
 PImage img;
 
+ChairGrid cgridLeft = new ChairGrid(50,666,13);
+ChairGrid cgRight = new ChairGrid(370,666,13);
 
 
 Building building = new Building (4,100,600,800,50);
@@ -30,7 +32,8 @@ void draw(){
   }
   //println(allPatients.get(0).currentDoctor);
   background(210);
- 
+  cgridLeft.display();
+  cgRight.display();
   building.drawBuilding();
   
   //didn't use Doctor doctor:allDoctors as an iterator because of ConcurrentModificationException
