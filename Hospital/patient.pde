@@ -10,6 +10,8 @@ class Patient {
   boolean isSeated;
   boolean reachedDoctor;
   
+  boolean searchingLeft;
+  
   float patientX;
   float patientY;
   
@@ -28,7 +30,15 @@ class Patient {
     this.reachedDoctor = false;
     this.currentDoctor = null;
     
-    updateColor();
+    this.updateColor();
+    
+    if (random(1)<0.5){
+      searchingLeft=true;
+    }
+    else{
+      searchingLeft=false;
+    }
+    
   }
   
   void updateColor(){

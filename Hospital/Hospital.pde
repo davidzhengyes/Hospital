@@ -61,6 +61,7 @@ void draw(){
   
   //not using Patient patient:allPatients same reason as doctors
   for (int i=0; i<allPatients.size(); i++){
+    
     allPatients.get(i).updateColor();
     if(allPatients.get(i).isHealthy == false){//need if here, if patient is not already healed
       allPatients.get(i).drawPa();
