@@ -42,6 +42,10 @@ public void prioritize_Injuries_Checkbox(GCheckbox source, GEvent event) { //_CO
 
 } //_CODE_:prioritize_Injuries:520254:
 
+public void patient_Speed_Slider(GCustomSlider source, GEvent event) { //_CODE_:patient_Speed:382723:
+  
+} //_CODE_:patient_Speed:382723:
+
 
 
 // Create all the GUI controls. 
@@ -85,7 +89,7 @@ public void createGUI(){
   label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label2.setText("Doctor Heal Speed");
   label2.setOpaque(false);
-  label3 = new GLabel(window1, 310, 0, 80, 20);
+  label3 = new GLabel(window1, 300, 0, 120, 20);
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label3.setText("Num Doctor");
   label3.setOpaque(false);
@@ -104,7 +108,7 @@ public void createGUI(){
   patient_Influx.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   patient_Influx.setOpaque(true);
   patient_Influx.addEventHandler(this, "patient_Influx_Slider");
-  label4 = new GLabel(window1, 30, 80, 80, 20);
+  label4 = new GLabel(window1, 20, 80, 120, 20);
   label4.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label4.setText("Patient Influx");
   label4.setOpaque(false);
@@ -114,6 +118,21 @@ public void createGUI(){
   prioritize_Injuries.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   prioritize_Injuries.setOpaque(true);
   prioritize_Injuries.addEventHandler(this, "prioritize_Injuries_Checkbox");
+  patient_Speed = new GCustomSlider(window1, 160, 100, 120, 60, "purple18px");
+  patient_Speed.setShowValue(true);
+  patient_Speed.setShowLimits(true);
+  patient_Speed.setLimits(5, 1, 10);
+  patient_Speed.setNbrTicks(10);
+  patient_Speed.setStickToTicks(true);
+  patient_Speed.setShowTicks(true);
+  patient_Speed.setNumberFormat(G4P.INTEGER, 0);
+  patient_Speed.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  patient_Speed.setOpaque(true);
+  patient_Speed.addEventHandler(this, "patient_Speed_Slider");
+  label5 = new GLabel(window1, 160, 80, 120, 20);
+  label5.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label5.setText("Patient Speed");
+  label5.setOpaque(false);
   window1.loop();
 }
 
@@ -129,3 +148,5 @@ GTextField num_Doctor;
 GCustomSlider patient_Influx; 
 GLabel label4; 
 GCheckbox prioritize_Injuries; 
+GCustomSlider patient_Speed; 
+GLabel label5; 
