@@ -94,6 +94,7 @@ public void createGUI(){
   label3.setText("Num Doctor");
   label3.setOpaque(false);
   num_Doctor = new GTextField(window1, 300, 20, 120, 60, G4P.SCROLLBARS_NONE);
+  num_Doctor.setPromptText("Enter a Number");
   num_Doctor.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   num_Doctor.setOpaque(true);
   num_Doctor.addEventHandler(this, "num_Docotor_Changer");
