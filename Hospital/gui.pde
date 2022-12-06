@@ -27,10 +27,20 @@ public void doctor_Speed_Slider(GCustomSlider source, GEvent event) { //_CODE_:d
 } //_CODE_:doctor_Speed:501818:
 
 public void num_Docotor_Changer(GTextField source, GEvent event) { //_CODE_:num_Doctor:501931:
-  if (int(num_Doctor.getText())!=0){
+println("11");
+  if (int(num_Doctor.getText())>36){
+    building.numRooms = 36;
+    num_Doctor.setText("36");
+    println("1");
+  }
+  println("22");
+  if (int(num_Doctor.getText())!=0 && int(num_Doctor.getText())<=36){
     reset();
     building.numRooms = int(num_Doctor.getText());
+    println("2");
+    print(building.numRooms);
   }
+  
   building.createBuilding();
 } //_CODE_:num_Doctor:501931:
 
