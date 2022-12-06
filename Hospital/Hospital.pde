@@ -37,7 +37,7 @@ void draw(){
   building.drawBuilding();
   
   //didn't use Doctor doctor:allDoctors as an iterator because of ConcurrentModificationException
-  for(int i=0;i<allDoctors.size();i++){  //for(Doctor doctor:allDoctors)
+  for(int i=0;i<allDoctors.size();i++){ 
     
     //randomly assigning patients to doctors;
     allDoctors.get(i).drawDr();
@@ -120,5 +120,5 @@ void reset(){
   building.createBuilding();
   allPatients.add(new Patient (0,0,99, false,false,false,300,700));
   loop();
-
+  print("started loop again");
 }
