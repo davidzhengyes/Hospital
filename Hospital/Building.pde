@@ -41,6 +41,8 @@ class Building{
         
         if (i%2==0){
           currRoom.xPos = 0;
+          
+          
         }
         else{
           currRoom.xPos = width-(width-this.pathWidth)/2;
