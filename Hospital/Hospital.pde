@@ -3,7 +3,7 @@ ArrayList<Doctor> allDoctors = new ArrayList<Doctor>();
 ArrayList<Patient> allPatients = new ArrayList<Patient>();
 import g4p_controls.*;
 PImage img;
-
+//s
 ChairGrid cgridLeft = new ChairGrid(50,666,13);
 ChairGrid cgRight = new ChairGrid(370,666,13);
 
