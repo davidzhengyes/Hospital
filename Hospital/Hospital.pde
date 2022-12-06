@@ -8,7 +8,7 @@ ChairGrid cgridLeft = new ChairGrid(50,666,13);
 ChairGrid cgRight = new ChairGrid(370,666,13);
 
 
-Building building = new Building (4,100,600,800,20);
+Building building = new Building (4,100,600,800,50);
 void setup(){
   //img = loadImage ("yep.jpg");
   size(600,800);
@@ -90,18 +90,8 @@ void draw(){
         }
         
       }
-      else{ //those who do not have a doctor
-        if (allPatients.get(i).patientY==700 ){
-          if (allPatients.get(i).searchingLeft ==true){
-            allPatients.get(i).patientX--;
-          }
-          else{
-            allPatients.get(i).patientX++;
-          }
-        }
-        else{
-          allPatients.get(i).patientY--;
-        }
+      else{
+        allPatients.get(i).patientY--;
       }
     }
     else if(allPatients.get(i).isHealthy == true){
@@ -130,4 +120,5 @@ void reset(){
   building.createBuilding();
   allPatients.add(new Patient (0,0,99, false,false,false,300,700));
   loop();
+  print("started loop again");
 }

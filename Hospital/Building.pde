@@ -58,29 +58,22 @@ class Building{
     for (int i=0; i<this.numRooms; i++){
       Room currRoom = rooms.get(i);
       
-      
+      strokeWeight(5);
       stroke(0);
       
+      if (i%2==0){
+        
+        line(currRoom.xPos+this.xWidth+1, currRoom.yPos,currRoom.xPos+this.xWidth+1,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0);
+        line(currRoom.xPos+this.xWidth+1, currRoom.yPos+(this.yWidth-this.doorWidth)/2.0 + this.doorWidth,currRoom.xPos+this.xWidth+1,currRoom.yPos+this.yWidth);
+      }
+      else{
+        line(currRoom.xPos-1,currRoom.yPos,currRoom.xPos-1,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0);
+        line(currRoom.xPos-1,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0+this.doorWidth,currRoom.xPos-1,currRoom.yPos+this.yWidth);
+      }
       
-      strokeWeight(5);
       fill(255);
       stroke(255);
       rect(currRoom.xPos, currRoom.yPos, this.xWidth, this.yWidth);
-      
-      
-      stroke(0);
-      strokeWeight(1);
-      if (i%2==0){
-        
-        line(currRoom.xPos+this.xWidth+2, currRoom.yPos,currRoom.xPos+this.xWidth+2,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0);
-        line(currRoom.xPos+this.xWidth+2, currRoom.yPos+(this.yWidth-this.doorWidth)/2.0 + this.doorWidth,currRoom.xPos+this.xWidth+2,currRoom.yPos+this.yWidth);
-      }
-      else{
-        line(currRoom.xPos-2,currRoom.yPos,currRoom.xPos-2,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0);
-        line(currRoom.xPos-2,currRoom.yPos+(this.yWidth-this.doorWidth)/2.0+this.doorWidth,currRoom.xPos-2,currRoom.yPos+this.yWidth);
-      }
-      
-      strokeWeight(5);
       
       stroke(0);
       line(currRoom.xPos,currRoom.yPos,currRoom.xPos+this.xWidth,currRoom.yPos);
