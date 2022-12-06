@@ -4,8 +4,10 @@ ArrayList<Patient> allPatients = new ArrayList<Patient>();
 import g4p_controls.*;
 PImage img;
 //s
-ChairGrid cgridLeft = new ChairGrid(50,666,13);
-ChairGrid cgRight = new ChairGrid(370,666,13);
+ChairGrid cgLeft = new ChairGrid(50,666,12);
+ChairGrid cgRight = new ChairGrid(370,666,12);
+Boolean[] leftGrid = new Boolean[cgLeft.chairNum];
+Boolean[] rightGrid = new Boolean [cgRight.chairNum];
 
 
 Building building = new Building (4,100,600,800,20);
@@ -32,7 +34,7 @@ void draw(){
   }
   //println(allPatients.get(0).currentDoctor);
   background(210);
-  cgridLeft.display();
+  cgLeft.display();
   cgRight.display();
   building.drawBuilding();
   
