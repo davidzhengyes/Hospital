@@ -6,8 +6,8 @@ PImage img;
 //s
 ChairGrid cgLeft = new ChairGrid(50,666,12);
 ChairGrid cgRight = new ChairGrid(370,666,12);
-Boolean[] leftGrid = new Boolean[cgLeft.chairNum];
-Boolean[] rightGrid = new Boolean [cgRight.chairNum];
+Boolean[] leftGrid = new Boolean[cgLeft.chairNum*2];
+Boolean[] rightGrid = new Boolean [cgRight.chairNum*2];
 
 
 Building building = new Building (4,100,600,800,20);
@@ -22,6 +22,11 @@ void setup(){
   
   createGUI();
   building.createBuilding();
+  
+  for (int i=0; i<leftGrid.length;i++){
+    leftGrid[i]=false;
+    rightGrid[i]=false;
+  }
 
 }
 
@@ -64,7 +69,15 @@ void draw(){
   //not using Patient patient:allPatients same reason as doctors
   for (int i=0; i<allPatients.size(); i++){
     
+    if (allPatients.get(i).chairIndex==-1){
+      for (int g=0; g<leftGrid.length;g++){
+        //if left or right grid [g] is false, make it true, set chair index to g, break loop
+      }
+    }
+    
     allPatients.get(i).updateColor();
+    
+    
     if(allPatients.get(i).isHealthy == false){//need if here, if patient is not already healed
       allPatients.get(i).drawPa();
       
