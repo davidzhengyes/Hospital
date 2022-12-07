@@ -151,7 +151,10 @@ void draw(){
         
       }
       else{ //those who do not have a doctor //edit here more for seating
-        if (patient.patientY==700 ){
+        if (patient.patientY==700){
+          patient.reachedChairY=true;
+        }
+        if (patient.reachedChairY){
           
           if (patient.patientX==57+(patient.chairIndex%12)*15){
             patient.samexWithSeat=true;
@@ -160,12 +163,13 @@ void draw(){
           if (patient.searchingLeft ==true && patient.samexWithSeat==false){
             patient.patientX--;
           }
-          else if (patient.samexWithSeat){
+          else if (patient.samexWithSeat && patient.patientY>cgLeft.middleYpos){
+            
             patient.patientY--;
           }
-          else{
-            patient.patientX++;
-          }
+          //else{
+          //  patient.patientX++;
+          //}
         }
         else{
           patient.patientY--;
