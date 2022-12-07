@@ -157,7 +157,7 @@ void draw(){
           }
           if (patient.reachedChairY){
             
-            if (patient.patientX==57+(patient.chairIndex%12)*15){
+            if (patient.patientX==57+(patient.chairIndex%12)*15 || patient.patientX==377+(patient.chairIndex%12)*15){
               patient.samexWithSeat=true;
             }
             
@@ -168,20 +168,23 @@ void draw(){
               
               patient.patientY++;
             }
-            //else{
-            //  patient.patientX++;
-            //}
+            
+            if (patient.searchingLeft ==false && patient.samexWithSeat==false){
+              patient.patientX++;
+            }
+            
+
           }
           else{
             patient.patientY--;
           }
         }
-        else if (patient.chairIndex>=12){
+        else if (patient.chairIndex>=12){ //same as above but for bottom left row
           if (patient.patientY==700){
             patient.reachedChairY=true;
           }
           if(patient.reachedChairY){
-            if (patient.patientX==57+(patient.chairIndex%12)*15){
+            if (patient.patientX==57+(patient.chairIndex%12)*15 || patient.patientX==377+(patient.chairIndex%12)*15){
               patient.samexWithSeat=true;
             }
             
@@ -192,6 +195,11 @@ void draw(){
               
               patient.patientY--;
             }
+            
+            if (patient.searchingLeft ==false && patient.samexWithSeat==false){
+              patient.patientX++;
+            }
+
           }
           else{
             patient.patientY--;
