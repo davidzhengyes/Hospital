@@ -153,8 +153,15 @@ void draw(){
       else{ //those who do not have a doctor //edit here more for seating
         if (patient.patientY==700 ){
           
-          if (patient.searchingLeft ==true && patient.patientX>=50+(patient.chairIndex%12)*15){
+          if (patient.patientX==57+(patient.chairIndex%12)*15){
+            patient.samexWithSeat=true;
+          }
+          
+          if (patient.searchingLeft ==true && patient.samexWithSeat==false){
             patient.patientX--;
+          }
+          else if (patient.samexWithSeat){
+            patient.patientY--;
           }
           else{
             patient.patientX++;
