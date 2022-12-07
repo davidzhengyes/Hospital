@@ -70,81 +70,86 @@ void draw(){
   for (int i=0; i<allPatients.size(); i++){
     
     Boolean[] gridToSearch;
-    
-    if (allPatients.get(i).searchingLeft==true){
-      gridToSearch=leftGrid;
+    Patient patient = allPatients.get(i);
+ 
+   
+    if (patient.chairIndex==0){
+      println(patient.patientX);
     }
-    else{
-      gridToSearch=rightGrid;
-    }
     
-    if (allPatients.get(i).chairIndex==-1){
-      for (int g=0; g<gridToSearch.length;g++){
-        //if left or right grid [g] is false, make it true, set chair index to g, break loop
-        if(gridToSearch[g]==false){
-          gridToSearch[g]=true; //WOW UTILIZING POINTER ARRAY HOPE IT WORKS :D
-          allPatients.get(i).chairIndex=g;
-          break;
+    if(patient.chairIndex==-1 && patient.currentDoctor==null){
+      for (int g=0;g<leftGrid.length;g++){
+        if (patient.searchingLeft==true){
+          if(leftGrid[g]==false){
+            
+            leftGrid[g]=true; 
+            patient.chairIndex=g;
+            patient.hasSeat=true;
+            break;
+          }
+        }
+        else{
+          
         }
       }
     }
     
-    allPatients.get(i).updateColor();
+    patient.updateColor();
     
     
-    if(allPatients.get(i).isHealthy == false){//need if here, if patient is not already healed
-      allPatients.get(i).drawPa();
+    if(patient.isHealthy == false){//need if here, if patient is not already healed
+      patient.drawPa();
       
-      allPatients.get(i).timeSinceEntered++;
+      patient.timeSinceEntered++;
       
-      if (allPatients.get(i).currentDoctor != null){
+      if (patient.currentDoctor != null){
         
-        if (allPatients.get(i).patientY == allPatients.get(i).currentDoctor.yPos){
+        if (patient.patientY == patient.currentDoctor.yPos){
           //if patient same height as doctor
-          if (abs(allPatients.get(i).patientX - allPatients.get(i).currentDoctor.xPos)==15){
-            allPatients.get(i).reachedDoctor = true;
+          if (abs(patient.patientX - patient.currentDoctor.xPos)==15){
+            patient.reachedDoctor = true;
           }
-          if (allPatients.get(i).patientX < allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == false){
-            allPatients.get(i).patientX++;
+          if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == false){
+            patient.patientX++;
           }
-          else if (allPatients.get(i).patientX > allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == false){
-            allPatients.get(i).patientX--;
+          else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == false){
+            patient.patientX--;
           }
           
           
         }
         else{
           //if not at same height keep going up
-          allPatients.get(i).patientY--;
+          patient.patientY--;
         }
         
       }
       else{ //those who do not have a doctor //edit here more for seating
-        if (allPatients.get(i).patientY==700 ){
-          if (allPatients.get(i).searchingLeft ==true && allPatients.get(i).patientX!=50+allPatients.get(i).chairIndex*15){
-            allPatients.get(i).patientX--;
+        if (patient.patientY==700 ){
+          if (patient.searchingLeft ==true && patient.patientX>=50+(patient.chairIndex%13)*15){
+            patient.patientX--;
           }
           else{
-            allPatients.get(i).patientX++;
+            patient.patientX++;
           }
         }
         else{
-          allPatients.get(i).patientY--;
+          patient.patientY--;
         }
       }
     }
-    else if(allPatients.get(i).isHealthy == true){
-      allPatients.get(i).drawPa();
-      if (allPatients.get(i).patientX != building.pathWidth/2 + building.xWidth){
-        if (allPatients.get(i).patientX < allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == true){
-          allPatients.get(i).patientX--;
+    else if(patient.isHealthy == true){
+      patient.drawPa();
+      if (patient.patientX != building.pathWidth/2 + building.xWidth){
+        if (patient.patientX < patient.currentDoctor.xPos && patient.reachedDoctor == true){
+          patient.patientX--;
         }
-        else if (allPatients.get(i).patientX > allPatients.get(i).currentDoctor.xPos && allPatients.get(i).reachedDoctor == true){
-          allPatients.get(i).patientX++;
+        else if (patient.patientX > patient.currentDoctor.xPos && patient.reachedDoctor == true){
+          patient.patientX++;
         }
       }
       else{
-       allPatients.get(i).patientY--; 
+       patient.patientY--; 
       }
     }
   }
@@ -158,5 +163,11 @@ void reset(){
   allPatients = new ArrayList<Patient>();
   building.createBuilding();
   allPatients.add(new Patient (0,0,99, false,false,false,300,700));
+  
+  for (int i=0; i<leftGrid.length;i++){
+    leftGrid[i]=false;
+    rightGrid[i]=false;
+  }
+  
   loop();
 }

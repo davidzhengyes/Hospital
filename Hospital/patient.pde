@@ -12,6 +12,7 @@ class Patient {
   
   int chairIndex;
   boolean searchingLeft;
+  boolean hasSeat;
   
   float patientX;
   float patientY;
@@ -33,6 +34,7 @@ class Patient {
     this.reachedDoctor = false;
     this.currentDoctor = null;
     this.chairIndex=-1;
+    this.hasSeat=false;
     
     this.updateColor();
     
