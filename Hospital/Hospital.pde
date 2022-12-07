@@ -71,11 +71,33 @@ void draw(){
     
     Boolean[] gridToSearch;
     Patient patient = allPatients.get(i);
- 
+    try{
+      //println(allPatients.get(4).chairIndex);
+    }
+    catch(Exception e){
+      
+    }
+    if (patient.searchingLeft==true && patient.chairIndex==-1){
+      gridToSearch=leftGrid;
+    }
+    else{
+      gridToSearch=rightGrid;
+    }
    
     if (patient.chairIndex==0){
       println(patient.patientX);
     }
+    //if (patient.chairIndex==-1 && patient.currentDoctor==null){
+    //  for (int g=0; g<gridToSearch.length;g++){
+    //    //if left or right grid [g] is false, make it true, set chair index to g, break loop
+    //    if(gridToSearch[g]==false){
+    //      gridToSearch[g]=true; //WOW UTILIZING POINTER ARRAY HOPE IT WORKS :D
+    //      patient.chairIndex=g;
+    //      patient.hasSeat=true;
+    //      break;
+    //    }
+    //  }
+    //}
     
     if(patient.chairIndex==-1 && patient.currentDoctor==null){
       for (int g=0;g<leftGrid.length;g++){
