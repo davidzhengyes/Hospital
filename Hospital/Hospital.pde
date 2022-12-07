@@ -89,10 +89,7 @@ void draw(){
       gridToSearch=rightGrid;
     }
    
-    if (patient.chairIndex==0){
-      println(patient.patientX);
-      println(patient.searchingLeft);
-    }
+   
     if (patient.chairIndex==-1 && patient.currentDoctor==null){ 
     
       for (int g=0; g<gridToSearch.length;g++){
@@ -155,7 +152,8 @@ void draw(){
       }
       else{ //those who do not have a doctor //edit here more for seating
         if (patient.patientY==700 ){
-          if (patient.searchingLeft ==true && patient.patientX>=50+(patient.chairIndex%13)*15){
+          
+          if (patient.searchingLeft ==true && patient.patientX>=50+(patient.chairIndex%12)*15){
             patient.patientX--;
           }
           else{
