@@ -83,6 +83,7 @@ void draw(){
         //if left or right grid [g] is false, make it true, set chair index to g, break loop
         if(gridToSearch[g]==false){
           gridToSearch[g]=true; //WOW UTILIZING POINTER ARRAY HOPE IT WORKS :D
+          allPatients.get(i).chairIndex=g;
           break;
         }
       }
@@ -118,9 +119,9 @@ void draw(){
         }
         
       }
-      else{ //those who do not have a doctor
+      else{ //those who do not have a doctor //edit here more for seating
         if (allPatients.get(i).patientY==700 ){
-          if (allPatients.get(i).searchingLeft ==true){
+          if (allPatients.get(i).searchingLeft ==true && allPatients.get(i).patientX!=50+allPatients.get(i).chairIndex*15){
             allPatients.get(i).patientX--;
           }
           else{
