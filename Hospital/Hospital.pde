@@ -58,6 +58,7 @@ void draw(){
         if (allPatients.get(g).currentDoctor == null){
           allPatients.get(g).currentDoctor = doctor;
           doctor.currentPatient = allPatients.get(g);
+          allPatients.get(g).waiting=false;
           break;
         //print(doctor.currentPatient.patientX);
         }
@@ -76,12 +77,8 @@ void draw(){
     
     Boolean[] gridToSearch;
     Patient patient = allPatients.get(i);
-    try{
-      //println(allPatients.get(4).chairIndex);
-    }
-    catch(Exception e){
-      
-    }
+    checkToDelete(patient); //deletes patients if they have gone above the screen, that is if their y coord is negative.
+    
     if (patient.searchingLeft==true && patient.chairIndex==-1){
       gridToSearch=leftGrid;
     }
@@ -167,6 +164,9 @@ void draw(){
             else if (patient.samexWithSeat && patient.patientY<cgLeft.middleYpos-8){
               
               patient.patientY++;
+              if(patient.patientY==cgLeft.middleYpos-8){
+                patient.reachedSeat=true;
+              }
             }
             
             if (patient.searchingLeft ==false && patient.samexWithSeat==false){
@@ -194,6 +194,9 @@ void draw(){
             else if (patient.samexWithSeat && patient.patientY>cgLeft.middleYpos+8){
               
               patient.patientY--;
+              if(patient.patientY==cgLeft.middleYpos-8){
+                patient.reachedSeat=true;
+              }
             }
             
             if (patient.searchingLeft ==false && patient.samexWithSeat==false){
@@ -224,7 +227,11 @@ void draw(){
   }
 }
 
-
+void checkToDelete(Patient p){
+  if (p.patientY<0){
+    allPatients.remove(p);
+  }
+}
 
 void reset(){
   noLoop();

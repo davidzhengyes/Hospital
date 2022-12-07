@@ -16,6 +16,7 @@ class Patient {
   boolean samexWithSeat;
   boolean reachedChairY;
   boolean reachedSeat;
+  boolean waiting;
   
   float patientX;
   float patientY;
@@ -41,6 +42,7 @@ class Patient {
     this.samexWithSeat=false;
     this.reachedChairY=false;
     this.reachedSeat=false;
+    this.waiting=true;
     
     this.updateColor();
     
