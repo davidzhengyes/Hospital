@@ -45,23 +45,28 @@ void draw(){
   
   //didn't use Doctor doctor:allDoctors as an iterator because of ConcurrentModificationException
   for(int i=0;i<allDoctors.size();i++){ 
+    Doctor doctor = allDoctors.get(i);
     
     //randomly assigning patients to doctors;
-    allDoctors.get(i).drawDr();
-    if (allDoctors.get(i).currentPatient == null){ //if room is empty
+    doctor.drawDr();
+    if (doctor.currentPatient == null){ //if room is empty
       
-      Patient currPat = allPatients.get(int(random(allPatients.size())));
+      //looping through all patients and seeing if they dont have a doctor, and assigning them to each other
+      for(int g=0; g<allPatients.size();g++){
+        
       //pick random patient
-      if (currPat.currentDoctor == null){
-        currPat.currentDoctor = allDoctors.get(i);
-        allDoctors.get(i).currentPatient = currPat;
-      //print(doctor.currentPatient.patientX);
+        if (allPatients.get(g).currentDoctor == null){
+          allPatients.get(g).currentDoctor = doctor;
+          doctor.currentPatient = allPatients.get(g);
+          break;
+        //print(doctor.currentPatient.patientX);
+        }
       }
     }
     
     else{
-      if (allDoctors.get(i).currentPatient.reachedDoctor){
-        allDoctors.get(i).healPatient();
+      if (doctor.currentPatient.reachedDoctor){
+        doctor.healPatient();
       }
     }
   }
@@ -86,35 +91,37 @@ void draw(){
    
     if (patient.chairIndex==0){
       println(patient.patientX);
+      println(patient.searchingLeft);
     }
-    //if (patient.chairIndex==-1 && patient.currentDoctor==null){
-    //  for (int g=0; g<gridToSearch.length;g++){
-    //    //if left or right grid [g] is false, make it true, set chair index to g, break loop
-    //    if(gridToSearch[g]==false){
-    //      gridToSearch[g]=true; //WOW UTILIZING POINTER ARRAY HOPE IT WORKS :D
-    //      patient.chairIndex=g;
-    //      patient.hasSeat=true;
-    //      break;
-    //    }
-    //  }
-    //}
+    if (patient.chairIndex==-1 && patient.currentDoctor==null){ 
     
-    if(patient.chairIndex==-1 && patient.currentDoctor==null){
-      for (int g=0;g<leftGrid.length;g++){
-        if (patient.searchingLeft==true){
-          if(leftGrid[g]==false){
-            
-            leftGrid[g]=true; 
-            patient.chairIndex=g;
-            patient.hasSeat=true;
-            break;
-          }
-        }
-        else{
-          
+      for (int g=0; g<gridToSearch.length;g++){
+        //if left or right grid [g] is false, make it true, set chair index to g, break loop
+        if(gridToSearch[g]==false){
+          gridToSearch[g]=true; //WOW UTILIZING POINTER ARRAY HOPE IT WORKS :D
+          patient.chairIndex=g;
+          patient.hasSeat=true;
+          break;
         }
       }
     }
+    
+    //if(patient.chairIndex==-1 && patient.currentDoctor==null){
+    //  for (int g=0;g<leftGrid.length;g++){
+    //    if (patient.searchingLeft==true){
+    //      if(leftGrid[g]==false){
+            
+    //        leftGrid[g]=true; 
+    //        patient.chairIndex=g;
+    //        patient.hasSeat=true;
+    //        break;
+    //      }
+    //    }
+    //    else{
+          
+    //    }
+    //  }
+    //}
     
     patient.updateColor();
     
